@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+	<id>helpdesk</id>
+	<name>Helpdesk</name>
+	<summary>Ask your IT provider for help, from inside Nextcloud</summary>
+	<summary lang="da">Bed jeres IT-leverandør om hjælp, direkte fra Nextcloud</summary>
+	<description><![CDATA[Helpdesk gives everyone in your Nextcloud one place to ask for IT help.
+
+- Your IT provider is shown as the contact: name, phone, email, opening hours and the people there
+- Describe the problem, mark it urgent if it is, and attach screenshots
+- Requests always reach your provider: they are saved first and sent again until the mail goes through, and admins are told if it keeps failing
+- Each person sees their requests, open or solved, can write more or add a note, and mark them solved
+- An IT contact in the company (a group you choose) sees everyone's requests
+- Replies come by email, straight to the person who asked
+- One receiver at a time: switch between providers in the settings
+- Providers that deliver Nextcloud to their customers can lock the receiver in the server configuration
+
+Works with any helpdesk that receives email. With Ticket system for Nextcloud, each request becomes a ticket for the person who wrote it.]]></description>
+	<version>1.0.0</version>
+	<licence>AGPL-3.0-or-later</licence>
+	<author homepage="https://co-optimize.dk">Co-Optimize</author>
+	<namespace>Helpdesk</namespace>
+	<category>organization</category>
+	<website>https://github.com/IT-optimize/nextcloud-helpdesk</website>
+	<bugs>https://github.com/IT-optimize/nextcloud-helpdesk/issues</bugs>
+	<repository type="git">https://github.com/IT-optimize/nextcloud-helpdesk.git</repository>
+	<dependencies>
+		<php min-version="8.2"/>
+		<nextcloud min-version="34" max-version="35"/>
+	</dependencies>
+	<background-jobs>
+		<job>OCA\Helpdesk\BackgroundJob\SendRequestsJob</job>
+	</background-jobs>
+	<settings>
+		<admin>OCA\Helpdesk\Settings\Admin</admin>
+		<admin-section>OCA\Helpdesk\Settings\AdminSection</admin-section>
+	</settings>
+	<navigations>
+		<navigation>
+			<name>Helpdesk</name>
+			<route>helpdesk.page.index</route>
+			<icon>app.svg</icon>
+		</navigation>
+	</navigations>
+</info>
